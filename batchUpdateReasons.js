@@ -1,5 +1,5 @@
 // transactWrite for the AWS DocumentClient can only update in batches of 10 at a time, so we split ID's up that way.  We'll export them from here and feed each batch into a helper function in the resetReasons lambda, which can be called sequentially to do the updates for us.  If we wanted to go even further to make this more scalable, we could have another lambda respond to Put Events in DynamoDB, run a scan to get all the IDs, and make these batches with the results from that scan.  That way we wouldn't have to maintain this file if e.g. we wanted to add more Reasons to DynamoDB.
- 
+
 
 const ten = [
   1,
